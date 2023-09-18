@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class HomeWork1 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter seconds ");
+        System.out.println("Enter seconds  ");
         int s = in.nextInt();
 
         int sec = s % 60;
