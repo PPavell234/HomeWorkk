@@ -19,7 +19,6 @@ public class Stydent {
     }
 
 
-    //Ускоряем вычислени оценок с помощью метода Arrays.stream
 
 
     @Override
