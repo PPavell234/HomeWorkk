@@ -16,7 +16,18 @@ public class Student001 {
         this.averageGrade = (mathGrade + economicsGrade + foreignLanguageGrade) / 3;
     }
 
-    
+
+    @Override
+    public String toString() {
+        //Выводим
+        return "Студент: " +
+                "Номер студенческого билета: " + studentId +
+                ", Имя: " + name +
+                ", Фамилия: " + surname +
+                ", Год обучения: " + yearOfStudy;
+
+
+    }
 
     // Метод, который возвращает среднюю арифметическую оценку студента
     public double getAverageGrade() {
@@ -34,6 +45,13 @@ public class Student001 {
 
     }
 
+    public int getYearOfStudy() {
+        return yearOfStudy;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
 }
 class StudentTest001 {
     public static void main(String[] args) {
