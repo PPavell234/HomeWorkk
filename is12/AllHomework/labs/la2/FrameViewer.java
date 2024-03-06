@@ -1,8 +1,6 @@
 package labs.la2;
 
 import java.awt.*;
-
-
 import javax.swing.*;
 
 public class FrameViewer {

@@ -1,4 +1,4 @@
-package Practice_Exercises;
+package Practice_Exercises.chapterOne;
 
 
 public class Counter {

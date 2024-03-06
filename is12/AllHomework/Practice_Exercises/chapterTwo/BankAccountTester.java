@@ -1,11 +1,11 @@
-package Practice_Exercises;
+package Practice_Exercises.chapterTwo;
 
-public class BankAccountTester
-{
-    /**
-     Tests the methods of the BankAccount class.
-     @param args not used
-     */
+/**
+ *Task 7
+ */
+
+
+public class BankAccountTester {
     public static void main(String[] args)
     {
         BankAccount harrysChecking = new BankAccount();

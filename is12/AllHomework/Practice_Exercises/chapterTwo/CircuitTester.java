@@ -1,8 +1,11 @@
-package Practice_Exercises;
+package Practice_Exercises.chapterTwo;
+
+/**
+ *Task 6
+ */
 
 
 public class CircuitTester {
-
     public static void main(String[] args) {
 
         Circuit light = new Circuit();
@@ -21,5 +24,4 @@ public class CircuitTester {
         System.out.println(light.getSwtitchState(2));
 
     }
-
 }

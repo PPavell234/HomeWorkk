@@ -1,12 +1,16 @@
-package Practice_Exercises;
+package Practice_Exercises.chapterTwo;
 
-public class hallwayLight {
+/**
+ *Task 4
+ */
+
+public class Switcher {
 
     private int firstSwitch;
     private int secondSwitch;
     private int lampState;
 
-    public hallwayLight() {
+    public Switcher() {
         firstSwitch = 0;
         secondSwitch = 0;
         lampState = 0;
@@ -14,14 +18,14 @@ public class hallwayLight {
 
     public void toggleFirstSwitch() {
 
-        firstSwitch = (firstSwitch + 1) % 2;
-        lampState = (lampState + 1) % 2;
+        firstSwitch = (firstSwitch + 1)%2;
+        lampState = (lampState + 1)%2;
     }
 
     public void toggleSecondSwitch() {
 
-        secondSwitch = (secondSwitch + 1) % 2;
-        lampState = (lampState + 1) % 2;
+        secondSwitch = (secondSwitch + 1)%2;
+        lampState = (lampState + 1)%2;
 
     }
 
