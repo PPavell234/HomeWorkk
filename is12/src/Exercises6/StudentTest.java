@@ -8,9 +8,9 @@ public class StudentTest {
         Stydent student2 = new Stydent("000002", "Попов", "Петров", 3, 8, 9, 10);
         Stydent student3 = new Stydent("000003", "Максим", "Сергеев", 2, 9, 10, 11);
 
-        System.out.println(student1);
         System.out.println(student2);
         System.out.println(student3);
 
     }
+
 }
