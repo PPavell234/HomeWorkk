@@ -45,6 +45,13 @@ public class Student001 {
 
     }
 
+    public int getYearOfStudy() {
+        return yearOfStudy;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
 }
 class StudentTest001 {
     public static void main(String[] args) {
