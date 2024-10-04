@@ -5,6 +5,7 @@ import labs.Practice3part1.SodaCan;
 import java.util.logging.Level;
 
 public class STpri {
+}
 
 
 
@@ -12,17 +13,22 @@ public class STpri {
 
 
 
+
+/*
     Module moduleOne;
 
     public Module getModuleOne() {
         return moduleOne;
     }
+*/
 
 
 
 
+/*
 
     public static void main(String[] args) {
+*/
 
 
         // print the value as long
@@ -34,13 +40,13 @@ public class STpri {
 
 
 
-        long number1 = 18;
+     /*   long number1 = 18;
         long number2 = 21;
 
         int resultNumber = Long.compareUnsigned(number1, number2);
-        System.out.println("Result: " + resultNumber);
+        System.out.println("Result: " + resultNumber);*/
 
-        double newDow = number2.
+    /*    double newDow = number2.
         long val = 88L;
         String result = Long.toString(val);
         int error = 101;
@@ -60,3 +66,4 @@ public class STpri {
 
     }
 }
+*/
