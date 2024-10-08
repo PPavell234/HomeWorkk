@@ -72,6 +72,7 @@ public class Task1 {
 
         int converMoth = Integer.parseInt(moth);
         Date d = new Date(currentYear - 1900, converMoth, day);
+
         return d;
 
 
@@ -83,6 +84,7 @@ public class Task1 {
     public static void main(String[] args) {
         Task1 t = new Task1();
         t.sesonPrint();
+
 
     }
 
