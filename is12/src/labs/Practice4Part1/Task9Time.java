@@ -25,9 +25,9 @@ public class Task9Time {
         if (limitTimeOne >= hour1Temp || hour1Temp == limitTimeTwo && limitTimeOne >= hour2Temp || hour2Temp == limitTimeTwo) {
             hour1 = addCharToString(hour1, ':', 2);
             hour2 = addCharToString(hour2, ':', 2);
-            if (hour1Temp > hour2Temp) {
+            if (hour1Temp < hour2Temp) {
                 return " Сначало наступило время " + hour1 + " После этого наступило " + hour2;
-            } else if (hour1Temp < hour2Temp) {
+            } else if (hour1Temp > hour2Temp) {
                 return " Сначало наступило время " + hour2 + " После этого наступило " + hour1;
             }
 
@@ -73,6 +73,8 @@ public class Task9Time {
 
 
         System.out.println(t.Task9Time("24:00", "12:00"));
+        System.out.println(t.Task9Time("13:00", "12:00"));
+        System.out.println(t.Task9Time("13:00", "7:00"));
         System.out.println(t.compareTo(t));
     }
 }

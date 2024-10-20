@@ -1,6 +1,7 @@
 package labs.Practice4Part1;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Task6 {
     private static String wordOne;
@@ -10,16 +11,23 @@ public class Task6 {
     public static String firstAndLast(String word, String word2) {
         wordOne = word;
         wordTwo = word2;
+        if (isValidString(wordOne) && isValidString(wordTwo)) {
+            if (Character.toUpperCase(word.charAt(0)) == Character.toUpperCase(word2.charAt(0)) && Character.toUpperCase(word.charAt(word.length() - 1)) == Character.toUpperCase(word2.charAt(word2.length() - 1))) {
+                return "Первая и последняя буква у слов " + word + " и " + word2 + " равны";
+            } else {
 
-        if (Character.toUpperCase(word.charAt(0)) == Character.toUpperCase(word2.charAt(0)) && Character.toUpperCase(word.charAt(word.length() - 1)) == Character.toUpperCase(word2.charAt(word2.length() - 1))) {
-            return "Первая и последняя буква у слов " + word + " и " + word2 + " равны";
-        } else {
-
-            return "Первая и последняя буква у слов " + word + " и " + word2 + " не равны";
-
+                return "Первая и последняя буква у слов " + word + " и " + word2 + " не равны";
+            }
         }
+        return "Error";
 
 
+    }
+
+    private static boolean isValidString(String input) {
+        // Регулярное выражение для проверки, что строка содержит только буквы
+        Pattern pattern = Pattern.compile("^[a-zA-Zа-яА-ЯёЁ]+$");
+        return pattern.matcher(input).matches();
     }
 
 
@@ -29,7 +37,7 @@ public class Task6 {
         String wordOne = sc.nextLine();*/
 
         //Проверяем слоово word1 и world2 Сравниваются их Первая и последняя бува они должны у обоих слов одинаковые
-        System.out.println(firstAndLast("Topk2", "Topk2"));
+        System.out.println(firstAndLast("popkp", "popkt"));
 
      /*   String symbolOne = String.valueOf(wordOne.charAt(0));
         String symbolTwo = String.valueOf();

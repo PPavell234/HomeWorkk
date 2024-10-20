@@ -42,7 +42,7 @@ public class Task11Card {
 
 
     public static void main(String[] args) {
-        Task11Card card = new Task11Card("10");
+        Task11Card card = new Task11Card("-45");
 
         System.out.println(card.getDescription());
 

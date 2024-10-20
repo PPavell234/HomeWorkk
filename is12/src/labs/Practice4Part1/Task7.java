@@ -10,9 +10,11 @@ public class Task7 {
         } else {
             return ("Числа не в порядке возрастания и не в порядке убывания");
         }
-
-
     }
+
+//    public String CheckAscendingFull(int numberOne, int numberTwo, int numberThree) {
+//
+//    }
 
     public static void main(String[] args) {
 
@@ -20,6 +22,7 @@ public class Task7 {
         System.out.println(obj.CheckAscending(1, 2, 3));
         System.out.println(obj.CheckAscending(10, 9, 8));
         System.out.println(obj.CheckAscending(10, 10, 8));
+        System.out.println(obj.CheckAscending(-10, 10, 8));
 
 
     }
