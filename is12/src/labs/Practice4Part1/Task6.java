@@ -3,13 +3,20 @@ package labs.Practice4Part1;
 import java.util.Scanner;
 
 public class Task6 {
+    private static String wordOne;
+    private static String wordTwo;
 
-    
-    public String firstAndLast(String word, String word2) {
-        if (Character.toUpperCase(word.charAt(0)) == Character.toUpperCase(word2.charAt(0)) && Character.toUpperCase(word.length() - 1) == Character.toUpperCase(word2.length() - 1)) {
-            return " Первая и последняя буква у слов " + word + " и " + word2 + " Равны";
+
+    public static String firstAndLast(String word, String word2) {
+        wordOne = word;
+        wordTwo = word2;
+
+        if (Character.toUpperCase(word.charAt(0)) == Character.toUpperCase(word2.charAt(0)) && Character.toUpperCase(word.charAt(word.length() - 1)) == Character.toUpperCase(word2.charAt(word2.length() - 1))) {
+            return "Первая и последняя буква у слов " + word + " и " + word2 + " равны";
         } else {
-            return " Первая и последняя буква у слов " + word + " и " + word2 + " Не Равны";
+
+            return "Первая и последняя буква у слов " + word + " и " + word2 + " не равны";
+
         }
 
 
@@ -21,9 +28,8 @@ public class Task6 {
         System.out.println("Ввидете первое слово");
         String wordOne = sc.nextLine();*/
 
-        Task6 task6 = new Task6();
-
-        System.out.println(task6.firstAndLast("Pooop", "Ptioo2"));
+        //Проверяем слоово word1 и world2 Сравниваются их Первая и последняя бува они должны у обоих слов одинаковые
+        System.out.println(firstAndLast("Topk2", "Topk2"));
 
      /*   String symbolOne = String.valueOf(wordOne.charAt(0));
         String symbolTwo = String.valueOf();

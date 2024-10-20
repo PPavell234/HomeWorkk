@@ -3,17 +3,24 @@ package labs.Practice4Part1;
 import java.util.Scanner;
 
 public class Task5 {
+    private int number;
+
     public static void main(String[] args) {
+        Task5 t = new Task5();
         Scanner in = new Scanner(System.in);
         int num;
 
         System.out.print("Введите целое число ");
         num = in.nextInt();
 
-        System.out.print("Это число содержит ");
+        System.out.print("Это число содержит " + t.sizeNumber(num) );
 
         in.close();
 
+
+    }
+
+    public String sizeNumber(int num) {
         if (num >= 0 && num < 10) {
             System.out.print("1 ");
         } else if (num < 0) {
@@ -59,7 +66,12 @@ public class Task5 {
         } else if (num >= 1000000000) {
             System.out.print("10 ");
         }
+        return " ";
 
-        System.out.println("цифр");
     }
 }
+
+
+
+
+
