@@ -11,64 +11,66 @@ public class Task10Grade {
     private double count;
 
 
-    public void setGrage(String numericalGrade) {
+    /**
+     * Устанавливает буквенную оценку и вычисляет соответствующее
+     * числовое значение.
+     *
+     * @param numericalGrade буквенная оценка (например, "A", "B+", "C-","F")
+     */
+    public void setGrade(String numericalGrade) {
         this.numericalGrade = numericalGrade;
-
+        count = 0; // Сброс значения count перед каждой установкой
 
         double add = 0.3;
 
-
-        if (numericalGrade.equals("A") || numericalGrade.equals("+A") || numericalGrade.equals("-A")) {
+        if (numericalGrade.equals("A") || numericalGrade.equals("A+") || numericalGrade.equals("A-")) {
             count = A;
-            if (numericalGrade.charAt(0) == '-') {
-                count = count - add;
+            if (numericalGrade.equals("A-")) {
+                count -= add;
+            } else if (numericalGrade.equals("A+")) {
+                count += add;
             }
-            if (numericalGrade.charAt(0) == '+') {
-                count = count + 0.3;
-            }
-
-        } else if (numericalGrade.equals("B") || numericalGrade.equals("+B") || numericalGrade.equals("-B")) {
+        } else if (numericalGrade.equals("B") || numericalGrade.equals("B+") || numericalGrade.equals("B-")) {
             count = B;
-            if (numericalGrade.charAt(0) == '-') {
-                count = count - add;
+            if (numericalGrade.equals("B-")) {
+                count -= add;
+            } else if (numericalGrade.equals("B+")) {
+                count += add;
             }
-            if (numericalGrade.charAt(0) == '+') {
-                count = count + 0.3;
-            }
-        } else if (numericalGrade.equals("C") || numericalGrade.equals("+C") || numericalGrade.equals("-C")) {
+        } else if (numericalGrade.equals("C") || numericalGrade.equals("C+") || numericalGrade.equals("C-")) {
             count = C;
-            if (numericalGrade.charAt(0) == '-') {
-                count = count - add;
+            if (numericalGrade.equals("C-")) {
+                count -= add;
+            } else if (numericalGrade.equals("C+")) {
+                count += add;
             }
-            if (numericalGrade.charAt(0) == '+') {
-                count = count + 0.3;
-            }
-
-        } else if (numericalGrade.equals("D") || numericalGrade.equals("+D") || numericalGrade.equals("-D")) {
+        } else if (numericalGrade.equals("D") || numericalGrade.equals("D+") || numericalGrade.equals("D-")) {
             count = D;
-            if (numericalGrade.charAt(0) == '-') {
-                count = count - add;
+            if (numericalGrade.equals("D-")) {
+                count -= add;
+            } else if (numericalGrade.equals("D+")) {
+                count += add;
             }
-            if (numericalGrade.charAt(0) == '+') {
-                count = count + 0.3;
-            }
-        } else if (numericalGrade.equals("F") || numericalGrade.equals("+F") || numericalGrade.equals("-F")) {
-            count = F;
-            if (numericalGrade.charAt(0) == '-') {
-                count = count - add;
-            }
-            if (numericalGrade.charAt(0) == '+') {
-                count = count + 0.3;
-            }
+        } else if (numericalGrade.equals("F")) {
+            count = F; // "F", "F+" и "F-" не имеют смысла, так как F - это 0
         }
-
-
     }
 
 
+    /**
+     * Получает числовое значение текущей оценки.
+     *
+     * @return числовое значение оценки
+     */
     public double getNumericalGrade() {
         return count;
     }
+
+    /**
+     * Получает буквенную оценку.
+     *
+     * @return буквенная оценка
+     */
 
     public String getLetterGrade() {
         return numericalGrade;
@@ -78,13 +80,13 @@ public class Task10Grade {
     public static void main(String[] args) {
         Task10Grade task10Grade = new Task10Grade();
 
-        task10Grade.setGrage("+D");
+        task10Grade.setGrade("B-");
         System.out.println(task10Grade.getNumericalGrade());
         System.out.println(task10Grade.getLetterGrade());
 
         System.out.println("------");
 
-        task10Grade.setGrage("-C");
+        task10Grade.setGrade("A-");
         System.out.println(task10Grade.getNumericalGrade());
         System.out.println(task10Grade.getLetterGrade());
 

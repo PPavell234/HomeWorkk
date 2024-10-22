@@ -3,7 +3,6 @@ package labs.Practice4Part1;
 import java.util.Scanner;
 
 public class Task5 {
-    private int number;
 
     public static void main(String[] args) {
         Task5 t = new Task5();
@@ -13,13 +12,21 @@ public class Task5 {
         System.out.print("Введите целое число ");
         num = in.nextInt();
 
-        System.out.print("Это число содержит " + t.sizeNumber(num) );
+        System.out.println(t.sizeNumber(num) + "Цифр в этом числе");
 
         in.close();
 
 
     }
 
+    /**
+     * Метод sizeNumber определяет количество цифр в переданном целом числе до 10 чисел.
+     *
+     * <p>Метод обрабатывает как положительные, так и отрицательные числа, а также * возвращает количество цифр в числе, включая ноль.</p>
+     *
+     * @param num целое число, для которого необходимо определить количество цифр
+     * @return строка, содержащая пробел (не используется для вывода, но требуется для совместимости)
+     */
     public String sizeNumber(int num) {
         if (num >= 0 && num < 10) {
             System.out.print("1 ");

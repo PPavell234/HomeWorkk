@@ -6,50 +6,60 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Time {
-
-    private String hour1;
-    private String hour2;
-
+class Time {
+    private int hours;
+    private int minutes;
 
 
-
-    public String Time(String hour1, String hour2) {
-
-        this.hour1 = hour1;
-        this.hour2 = hour2;
-
-        hour1 = hour1.replaceAll(":", "");
-        hour2 = hour2.replaceAll(":", "");
-
-
-
-
-  /*      if ()
-
-        if (hour1 > hour2) {
-            return " Сначало наступило время " + hour1 + "После этого наступило " + hour2;
-        } else if (hour1 < hour2) {
-            return " Сначало наступило время " + hour2 + "После этого наступило " + hour1;
-        }*/
-
-        return "Время равно";
+    /**
+     * Конструктор, который создает объект Time из строки.
+     *
+     * @param time строка времени в формате "HH:MM"
+     * @throws NumberFormatException если строка не соответствует формату или содержит недопустимые значения
+     */
+    public Time(String time) {
+        String[] parts = time.split(":");
+        this.hours = Integer.parseInt(parts[0]);
+        this.minutes = Integer.parseInt(parts[1]);
     }
 
-    public static void main(String args[]) throws ParseException {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter first time (hh:mm aa): ");
-        String time = input.nextLine();
-        System.out.println();
-        System.out.print("Enter second time (hh:mm aa): ");
-        String time2 = input.nextLine();
-        System.out.println();
-        DateFormat sdf = new SimpleDateFormat("hh:mm aa");
-        Date d1 = sdf.parse(time);
-        Date d2 = sdf.parse(time2);
+    /**
+     * Преобразует время в общее количество минут с начала суток.
+     *
+     * @return общее количество минут
+     */
+    public int toMinutes() {
+        return hours * 60 + minutes;
+    }
 
-        System.out.println("Time: " + sdf.format(d1));
-        System.out.println("Time: " + sdf.format(d2));
+    /**
+     * Форматирует время в строковом представлении "HH:MM".
+     *
+     * @return строка, представляющая время в формате "HH:MM"
+     */
+
+    public String format() {
+        return String.format("%02d:%02d", hours, minutes);
+    }
+
+    /**
+     * Сравнивает текущее время с другим временем.
+     *
+     * @param other другое время для сравнения
+     * @return -1, если текущее время предшествует другому;
+     * 0, если оба времени одинаковы; *          1, если текущее время позже другого
+     */
+    public int compareTo(Time other) {
+        int thisTotalMinutes = this.toMinutes();
+        int otherTotalMinutes = other.toMinutes();
+
+        if (thisTotalMinutes < otherTotalMinutes) {
+            return -1;
+        } else if (thisTotalMinutes > otherTotalMinutes) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
 

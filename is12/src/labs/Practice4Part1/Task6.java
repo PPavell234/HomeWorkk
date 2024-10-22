@@ -8,6 +8,15 @@ public class Task6 {
     private static String wordTwo;
 
 
+    /**
+     * Метод firstAndLast проверяет, равны ли первая и последняя буквы двух слов.
+     *
+     * <p>Метод игнорирует регистр букв и проверяет, что оба слова содержат только буквы. * Если одно из слов недопустимо (содержит не буквы), возвращается сообщение об ошибке.</p>
+     *
+     * @param word первое слово для сравнения * @param word2 второе слово для сравнения
+     * @return строка с сообщением о результате сравнения
+     */
+
     public static String firstAndLast(String word, String word2) {
         wordOne = word;
         wordTwo = word2;
@@ -24,6 +33,12 @@ public class Task6 {
 
     }
 
+    /**
+     * Метод isValidString проверяет, состоит ли строка только из букв.
+     *
+     * @param input строка, которую необходимо проверить * @return true, если строка содержит только буквы; false в противном случае
+     */
+
     private static boolean isValidString(String input) {
         // Регулярное выражение для проверки, что строка содержит только буквы
         Pattern pattern = Pattern.compile("^[a-zA-Zа-яА-ЯёЁ]+$");
@@ -32,30 +47,11 @@ public class Task6 {
 
 
     public static void main(String[] args) {
-        /*Scanner sc = new Scanner(System.in);
-        System.out.println("Ввидете первое слово");
-        String wordOne = sc.nextLine();*/
-
-        //Проверяем слоово word1 и world2 Сравниваются их Первая и последняя бува они должны у обоих слов одинаковые
-        System.out.println(firstAndLast("popkp", "popkt"));
-
-     /*   String symbolOne = String.valueOf(wordOne.charAt(0));
-        String symbolTwo = String.valueOf();
-
-        System.out.println(symbolOne + symbolTwo);*/
-
-        /*char symbolWordOne = wordOne.charAt(0);
-        char symbolWordTwo = (char) (wordOne.length()-1);*/
-      /*  System.out.println("Ввидете второе слово слово");
-        String wordTwo = sc.nextLine();*/
-
-        //System.out.println(wordOne.charAt(0) + " " + wordOne.charAt(wordOne.length()-1));
-
-      /*  if (symbolWordOne == symbolWordTwo){
-            System.out.println("Равны");
 
 
-        }*/
+
+        System.out.println(firstAndLast("world1", "world"));
+
 
     }
 
