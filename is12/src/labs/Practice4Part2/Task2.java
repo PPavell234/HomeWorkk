@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Task2 {
@@ -12,79 +11,130 @@ public class Task2 {
     private int day;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
     private Date date;
-    private String dataStirng;
 
+    /**
+     * Метод horoscopeMonthAndDay запрашивает у пользователя ввод даты рождения
+     * и возвращает введенную дату в формате "dd/MM".
+     *
+     * @return Строка, представляющая дату рождения в формате "dd/MM".
+     * @throws ParseException Если введенный формат даты неверен.
+     */
 
-    //овен,телец,близнец,рак,лев,дева,весы,скорпион,стрелец,козерог,водолей,рыбы
-
-
-    //получение даты
-    public String horoscopeMonthAndDay() throws ParseException {
-        this.dataStirng = dataStirng;
-
-
-        //String dateString; // example date string
+    public String getFortune() throws ParseException {
         Scanner sc = new Scanner(System.in);
-        dataStirng = sc.nextLine();
-        dataStirng = dataStirng.replaceAll(" ", "/");
+        System.out.print("Введите свой день рождения (день и месяц в формате dd MM): ");
+        String dataString = sc.nextLine().trim();
 
-        date = sdf.parse(dataStirng);
+        // Разделение строки на день и месяц
+        String[] parts = dataString.split(" ");
+        if (parts.length != 2) {
+            throw new ParseException("Неверный формат ввода", 0);
+        }
 
+        // Преобразование строки в числа
+        day = Integer.parseInt(parts[0]);
+        month = Integer.parseInt(parts[1]);
 
+        // Проверка на корректность дня и месяца
+        if (day < 1 || day > 31 || month < 1 || month > 12) {
+            throw new ParseException("Неверный день или месяц", 0);
+        }
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        month = calendar.get(Calendar.MONTH) + 1;
+        // Создание даты
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        calendar.set(Calendar.MONTH, month - 1); // Месяцы начинаются с 0
 
-        System.out.println();
+        date = calendar.getTime(); // Получение даты
 
-
-        return sdf.format(date);
-
-
+        return String.format("%02d/%02d", day, month); // Возвращаем введенную дату в формате dd MM
     }
 
-    //предсказание
-    private String prediction() throws ParseException {
+    /**
+     * Метод prediction возвращает предсказание на основе знака зодиака,
+     * определяемого по дате рождения.
+     *
+     * @return Строка с предсказанием для соответствующего знака зодиака.
+     */
 
-
-        //Овен
-        if (day <= 21 && month == 3 || day <= 20 && month == 4) {
-            return "Вы можете почувствовать внезапное желание рисковать сегодня, Овен." +
-                    " Не бойтесь выйти из зоны комфорта и попробовать что-то новое. " +
+    private String prediction() {
+        // Овен
+        if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+            return "Вы можете почувствовать внезапное желание рисковать сегодня, Овен. " +
+                    "Не бойтесь выйти из зоны комфорта и попробовать что-то новое. " +
                     "Ваша смелость будет вознаграждена неожиданными возможностями.";
-            //Телец
-        } else if (day <= 21 && month == 4 || day <= 21 && month == 5) {
-            return "Сегодня - отличный день, чтобы сосредоточиться на ваших отношениях, Телец." +
-                    " Питайте свои связи с любимыми и коллегами. Неожиданный звонок или сообщение от старого друга может принести улыбку на ваше лицо.";
-            //Близнецы
-        } else if (day <= 22 && month == 5 || day <= 21 && month == 6) {
+        }
+        // Телец
+        else if ((month == 4 && day >= 21) || (month == 5 && day <= 21)) {
+            return "Сегодня - отличный день, чтобы сосредоточиться на ваших отношениях, Телец. " +
+                    "Питайте свои связи с любимыми и коллегами. " +
+                    "Неожиданный звонок или сообщение от старого друга может принести улыбку на ваше лицо.";
+        }
+        // Близнецы
+        else if ((month == 5 && day >= 22) || (month == 6 && day <= 21)) {
             return "Ваш быстрый ум и остроумные идеи будут служить вам сегодня, Близнецы. " +
                     "Используйте свои навыки общения, чтобы разрешить любые конфликты или недопонимания. " +
                     "Творческий проект может потребовать вашего внимания.";
-            //Рак
-        } else if (day <= 22 && month == 6 || day <= 22 && month == 7) {
-            return "Заботьтесь о вашем эмоциональном благополучии сегодня, Рак." +
-                    " Практикуйте самоуспокоение и приоритезируйте свое психическое здоровье. " +
-                    "Расслабляющая ванна или хорошая книга могут быть именно тем, что вам нужно";
         }
-        //И т.д
+        // Рак
+        else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
+            return "Заботьтесь о вашем эмоциональном благополучии сегодня, Рак. " +
+                    "Практикуйте самоуспокоение и приоритезируйте свое психическое здоровье. " +
+                    "Расслабляющая ванна или хорошая книга могут быть именно тем, что вам нужно.";
+        }
+        // Лев
+        else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+            return "Сегодня вы можете почувствовать себя на вершине мира, Лев. " +
+                    "Используйте свою харизму, чтобы вдохновить других. " +
+                    "Ваши лидерские качества будут заметны.";
+        }
+        // Дева
+        else if ((month == 8 && day >= 24) || (month == 9 && day <= 22)) {
+            return "Дева, сегодня отличный день для того, чтобы сосредоточиться на деталях. " +
+                    "Ваши аналитические навыки помогут вам решить сложные задачи.";
+        }
+        // Весы
+        else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+            return "Весы, сегодня вам может понадобиться найти баланс в своих отношениях. " +
+                    "Слушайте других и старайтесь находить компромиссы.";
+        }
+        // Скорпион
+        else if ((month == 10 && day >= 23) || (month == 11 && day <= 22)) {
+            return "Скорпион, ваша интуиция будет на высоте сегодня. " +
+                    "Доверьтесь своим чувствам и не бойтесь принимать смелые решения.";
+        }
+        // Стрелец
+        else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+            return "Стрелец, сегодня вы можете почувствовать желание путешествовать. " +
+                    "Ищите новые приключения и возможности для роста.";
+        }
+        // Козерог
+        else if ((month == 12 && day >= 22) || (month == 1 && day <= 20)) {
+            return "Козерог, сегодня идеальный день для планирования. " +
+                    "Сосредоточьтесь на своих целях и не бойтесь ставить амбициозные задачи.";
+        }
+        // Водолей
+        else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
+            return "Водолей, ваша креативность будет на высоте сегодня. " +
+                    "Используйте свои идеи, чтобы вдохновить других.";
+        }
+        // Рыбы
+        else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+            return "Рыбы, сегодня вам может понадобиться время для размышлений. " +
+                    "Проводите время наедине с собой, чтобы восстановить внутренний баланс.";
+        }
 
-
-        return "Ошибка ввода";
+        return "Ошибка ввода"; // Если дата не соответствует ни одному знаку зодиака
     }
 
-    public static void main(String[] args) throws ParseException {
-        Task2 task = new Task2();
-        System.out.print("Введите свой день рождения(день и месяц):");
-
-        System.out.println(task.horoscopeMonthAndDay() + " " + task.prediction());
-
+    public static void main(String[] args) {
+        try {
+            Task2 task = new Task2();
+            System.out.println(task.getFortune() + " - " + task.prediction());
+        } catch (ParseException e) {
+            System.out.println("Ошибка: неверный формат даты.");
+        }
     }
-
 }
-
-
   /*  public void horoscope(){
         System.out.println("Введите свой день рождения (день и месяц):" + horoscopeMonthAndDay());
     }*/

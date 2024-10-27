@@ -37,7 +37,14 @@ public class Task3 {
 
     }
 
-
+    /**
+     * Метод для конвертации значений между различными единицами измерения.
+     *
+     * @param number1 первая единица измерения (например, fl-oz, lb)
+     * @param number2 вторая единица измерения (например, ml, g)
+     * @param number3 значение для конвертации
+     * @return строка, представляющая конвертированное значение, или сообщение об ошибке
+     */
     public String ConverVolume(String number1, String number2, String number3) {
 
 
@@ -66,6 +73,9 @@ public class Task3 {
         if (number1.equals("gal")) {
             if (number2.equals("l")) {
                 numberString = String.valueOf(GAL * Double.parseDouble(number3));
+                return numberString;
+            } else if (number2.equals("ml")) {
+                numberString = String.valueOf((GAL * 1000) * Double.parseDouble(number3));
                 return numberString;
             }
         }

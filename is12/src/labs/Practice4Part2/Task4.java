@@ -38,32 +38,28 @@ public class Task4 {
     }
 
     private void determineFigure() {
-        // Проверка на квадрат
-        if (isSquare()) {
+        // Проверка на треугольник
+        if (isTriangle()) {
+            System.out.println("Фигура: Треугольник");
+        } else if (isSquare()) {
             System.out.println("Фигура: Квадрат");
+        } else if (isRectangle()) {
+            System.out.println("Фигура: Прямоугольник");
+        } else if (isTrapezoid()) {
+            System.out.println("Фигура: Трапеция");
+        } else if (isParallelogram()) {
+            System.out.println("Фигура: Параллелограмм");
         } else {
-            // Проверка на прямоугольник
-            if (isRectangle()) {
-                System.out.println("Фигура: Прямоугольник");
-            } else {
-                // Проверка на трапецию
-                if (isTrapezoid()) {
-                    System.out.println("Фигура: Трапеция");
-                } else {
-                    // Проверка на параллелограмм
-                    if (isParallelogram()) {
-                        System.out.println("Фигура: Параллелограмм");
-                    } else {
-                        // Проверка на треугольник (используя только три точки, одна из точек должна быть 0 0)
-                        if (isTriangle()) {
-                            System.out.println("Фигура: Треугольник");
-                        } else {
-                            System.out.println("Фигура: Неизвестная");
-                        }
-                    }
-                }
-            }
+            System.out.println("Фигура: Неизвестная");
         }
+    }
+
+    private boolean isTriangle() {
+        // Проверка на коллинеарность
+        double area = 0.5 * Math.abs(pointOneX * (pointTwoY - pointThreeY) +
+                pointTwoX * (pointThreeY - pointOneY) +
+                pointThreeX * (pointOneY - pointTwoY));
+        return area != 0; // Если площадь не равна 0, значит это треугольник
     }
 
     private boolean isSquare() {
@@ -77,74 +73,36 @@ public class Task4 {
         double diagonal1 = calculateDistance(pointOneX, pointOneY, pointThreeX, pointThreeY);
         double diagonal2 = calculateDistance(pointTwoX, pointTwoY, pointFourX, pointFourY);
 
-        if (side1 == side2 && side1 == side3 && side1 == side4 &&
+        return side1 == side2 && side1 == side3 && side1 == side4 &&
                 isRightAngle(pointOneX, pointOneY, pointTwoX, pointTwoY, pointThreeX, pointThreeY) &&
                 isRightAngle(pointTwoX, pointTwoY, pointThreeX, pointThreeY, pointFourX, pointFourY) &&
                 isRightAngle(pointThreeX, pointThreeY, pointFourX, pointFourY, pointOneX, pointOneY) &&
                 isRightAngle(pointFourX, pointFourY, pointOneX, pointOneY, pointTwoX, pointTwoY) &&
-                diagonal1 == diagonal2) {
-            return true;
-        }
-        return false;
+                diagonal1 == diagonal2;
     }
 
     private boolean isRectangle() {
-        // Проверка на равные стороны и прямые углы
-        double side1 = calculateDistance(pointOneX, pointOneY, pointTwoX, pointTwoY);
-        double side2 = calculateDistance(pointTwoX, pointTwoY, pointThreeX, pointThreeY);
-        double side3 = calculateDistance(pointThreeX, pointThreeY, pointFourX, pointFourY);
-        double side4 = calculateDistance(pointFourX, pointFourY, pointOneX, pointOneY);
-
-        // Проверка на то, что две соседние стороны не равны
-        if ((side1 != side2 && side3 == side4) ||
-                (side1 == side2 && side3 != side4) ||
-                (side1 != side4 && side2 == side3) ||
-                (side1 == side4 && side2 != side3)) {
-
-            // Проверка на прямые углы
-            if (isRightAngle(pointOneX, pointOneY, pointTwoX, pointTwoY, pointThreeX, pointThreeY) &&
-                    isRightAngle(pointTwoX, pointTwoY, pointThreeX, pointThreeY, pointFourX, pointFourY) &&
-                    isRightAngle(pointThreeX, pointThreeY, pointFourX, pointFourY, pointOneX, pointOneY) &&
-                    isRightAngle(pointFourX, pointFourY, pointOneX, pointOneY, pointTwoX, pointTwoY)) {
-                return true;
-            }
-        }
-
-        return false;
+        // Проверка на прямые углы
+        return isRightAngle(pointOneX, pointOneY, pointTwoX, pointTwoY, pointThreeX, pointThreeY) &&
+                isRightAngle(pointTwoX, pointTwoY, pointThreeX, pointThreeY, pointFourX, pointFourY) &&
+                isRightAngle(pointThreeX, pointThreeY, pointFourX, pointFourY, pointOneX, pointOneY) &&
+                isRightAngle(pointFourX, pointFourY, pointOneX, pointOneY, pointTwoX, pointTwoY);
     }
 
     private boolean isTrapezoid() {
         // Проверка на параллельные стороны
-        double side1 = calculateDistance(pointOneX, pointOneY, pointTwoX, pointTwoY);
-        double side2 = calculateDistance(pointTwoX, pointTwoY, pointThreeX, pointThreeY);
-        double side3 = calculateDistance(pointThreeX, pointThreeY, pointFourX, pointFourY);
-        double side4 = calculateDistance(pointFourX, pointFourY, pointOneX, pointOneY);
-
-        // Проверка на параллельность
         double slope12 = calculateSlope(pointOneX, pointOneY, pointTwoX, pointTwoY);
         double slope34 = calculateSlope(pointThreeX, pointThreeY, pointFourX, pointFourY);
-        if ((slope12 == slope34 && side1 != side3) || (slope12 == slope34 && side2 != side4)) {
-            return true;
-        }
-        return false;
+        return slope12 == slope34; // Проверка на параллельность
     }
 
     private boolean isParallelogram() {
         // Проверка на параллельные стороны
-        double side1 = calculateDistance(pointOneX, pointOneY, pointTwoX, pointTwoY);
-        double side2 = calculateDistance(pointTwoX, pointTwoY, pointThreeX, pointThreeY);
-        double side3 = calculateDistance(pointThreeX, pointThreeY, pointFourX, pointFourY);
-        double side4 = calculateDistance(pointFourX, pointFourY, pointOneX, pointOneY);
-
-        // Проверка на параллельность
         double slope12 = calculateSlope(pointOneX, pointOneY, pointTwoX, pointTwoY);
         double slope34 = calculateSlope(pointThreeX, pointThreeY, pointFourX, pointFourY);
         double slope23 = calculateSlope(pointTwoX, pointTwoY, pointThreeX, pointThreeY);
         double slope41 = calculateSlope(pointFourX, pointFourY, pointOneX, pointOneY);
-        if ((slope12 == slope34 && side1 == side3 && slope23 == slope41 && side2 == side4)) {
-            return true;
-        }
-        return false;
+        return slope12 == slope34 && slope23 == slope41; // Проверка на параллельность
     }
 
     private double calculateDistance(double x1, double y1, double x2, double y2) {
@@ -165,31 +123,14 @@ public class Task4 {
         double side2 = calculateDistance(x2, y2, x3, y3);
         double side3 = calculateDistance(x3, y3, x1, y1);
         double maxSide = Math.max(Math.max(side1, side2), side3);
-        if (Math.pow(maxSide, 2) == Math.pow(side1, 2) + Math.pow(side2, 2) ||
+        return Math.pow(maxSide, 2) == Math.pow(side1, 2) + Math.pow(side2, 2) ||
                 Math.pow(maxSide, 2) == Math.pow(side2, 2) + Math.pow(side3, 2) ||
-                Math.pow(maxSide, 2) == Math.pow(side1, 2) + Math.pow(side3, 2)) {
-            return true;
-        }
-        return false;
+                Math.pow(maxSide, 2) == Math.pow(side1, 2) + Math.pow(side3, 2);
     }
 
-    // Проверка на треугольник (используя только три точки)
-    private boolean isTriangle() {
-        // Проверка, что все точки разные
-        if (pointOneX == pointTwoX && pointOneY == pointTwoY ||
-                pointOneX == pointThreeX && pointOneY == pointThreeY ||
-                pointTwoX == pointThreeX && pointTwoY == pointThreeY) {
-            return false;
-        }
-        return true;
-    }
-
-    //Запуск программы
+    // Запуск программы
     public static void main(String[] args) {
         Task4 task = new Task4();
         task.buildGraph();
-
-
-
     }
 }
