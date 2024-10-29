@@ -1,29 +1,16 @@
 package labs.Practice4Part1;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Scanner;
-
-class Time {
+public class task2 {
     private int hours;
     private int minutes;
 
-
-    /**
-     * Конструктор, который создает объект Time из строки.
-     *
-     * @param time строка времени в формате "HH:MM"
-     * @throws NumberFormatException если строка не соответствует формату или содержит недопустимые значения
-     */
     /**
      * Конструктор, который создает объект task1 из строки.
      *
      * @param time строка времени в формате "HH:MM"
      * @throws IllegalArgumentException если строка не соответствует формату или содержит недопустимые значения
      */
-    public Time(String time) {
+    public task2(String time) {
         String[] parts = time.split(":");
         if (parts.length != 2) {
             throw new IllegalArgumentException("Неверный формат времени. Должен быть HH:MM");
@@ -52,7 +39,7 @@ class Time {
      *
      * @return общее количество минут
      */
-    public int toMinutes() {
+    private int toMinutes() {
         return hours * 60 + minutes;
     }
 
@@ -61,30 +48,47 @@ class Time {
      *
      * @return строка, представляющая время в формате "HH:MM"
      */
-
-    public String format() {
+    private String format() {
         return String.format("%02d:%02d", hours, minutes);
     }
 
-    /**
-     * Сравнивает текущее время с другим временем.
-     *
-     * @param other другое время для сравнения
-     * @return -1, если текущее время предшествует другому;
-     * 0, если оба времени одинаковы;
-     * 1, если текущее время позже другого;
-     */
-    public int compareTo(Time other) {
-        int thisTotalMinutes = this.toMinutes();
-        int otherTotalMinutes = other.toMinutes();
 
-        if (thisTotalMinutes < otherTotalMinutes) {
-            return -1;
-        } else if (thisTotalMinutes > otherTotalMinutes) {
-            return 1;
+    /**
+     * Сравнивает два времени и возвращает строку с описанием результата сравнения.
+     *
+     * @param t1 первое время для сравнения
+     * @param t2 второе время для сравнения
+     * @return строка, описывающая результат сравнения времнеи
+     */
+
+    public static String compareTimes(task2 t1, task2 t2) {
+        if (t1.toMinutes() == t2.toMinutes()) {
+            return "Время пересекается ";
         } else {
-            return 0;
+            if (t1.toMinutes() > t2.toMinutes()) {
+                return "Время не пересекается сначало наступило " + t2.format() + " после этого " + t1.format();
+            } else {
+                return "Время не пересекается сначало наступило " + t1.format() + " после этого " + t2.format();
+
+            }
         }
     }
+
+
+    public static void main(String[] args) {
+
+        task2 time1 = new task2("12:60");
+        task2 time2 = new task2("16:30");
+        task2 time3 = new task2("18:30");
+        task2 time4 = new task2("16:30");
+
+
+        System.out.println(compareTimes(time1, time2));
+        System.out.println(compareTimes(time2, time4));
+        System.out.println(compareTimes(time2, time3));
+
+    }
 }
+
+
 
