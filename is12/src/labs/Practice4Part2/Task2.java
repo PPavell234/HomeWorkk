@@ -135,9 +135,7 @@ public class Task2 {
         }
     }
 }
-  /*  public void horoscope(){
-        System.out.println("Введите свой день рождения (день и месяц):" + horoscopeMonthAndDay());
-    }*/
+
 
 
 

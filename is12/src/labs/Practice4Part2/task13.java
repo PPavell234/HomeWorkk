@@ -24,9 +24,9 @@ public class task13 {
             throw new IllegalArgumentException("R не может быть равно нулю.");
         }
         if (FrostAlarm()) {
-            return "Тривога";
+            return "Тревога";
         }
-        return "Тривоги нету";
+        return "Тревога нету";
     }
 
 

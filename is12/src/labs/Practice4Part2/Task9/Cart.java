@@ -1,20 +1,33 @@
 package labs.Practice4Part2.Task9;
 
-public class Cart {
+import java.util.Scanner;
 
-    private String password;
+class Cart {
+    public String password;
+    public String numberCard; // Добавляем номер карты
 
-    public Cart(String password) {
+    public Cart() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите пароль (4 символа): ");
+        String inputPassword = scanner.nextLine();
 
-        if (password.length() == 4) {
-            this.password = password;
+        if (inputPassword.length() == 4) {
+            this.password = inputPassword;
             System.out.println("Пароль сохранен");
         } else {
-            System.out.println("Ошибка пароль должено быть 4 символа");
+            System.out.println("Ошибка! Пароль должен быть 4 символа.");
+            // Возможно, добавить повторный ввод пароля?
         }
+        scanner.close();
     }
 
-    public String getPassword() {
-        return password;
+    public String createCart(String numberCard, String password) {
+        if (password.length() == 4) {
+            this.numberCard = numberCard;
+            this.password = password;
+            return numberCard; // Возвращаем сообщение об успешном создании
+        } else {
+            return "Ошибка! Пароль должен быть 4 символа.";
+        }
     }
 }
