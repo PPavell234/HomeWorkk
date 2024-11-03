@@ -1,25 +1,30 @@
 package labs.Practice4Part2.Task_9;
 
-
 import java.util.Scanner;
+
 
 public class Bankomat {
 
-    private static final int MAX_ATTEMPTS = 3;
-    private static String correctPIN;
-    private static String numberCard;
+    private static final int MAX_ATTEMPTS = 3; // Максимальное количество попыток ввода PIN-кода
+    private static String correctPIN; // Правильный PIN-код для карты
+    private static String numberCard; // Номер карты
 
+    /**
+     * Главный метод программы. Создает карты и обрабатывает ввод пользователя.
+     *
+     * @param args Аргументы командной строки (не используются).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
-        String card1 = createCart("3456435345543553454353453534543", "3456");
+        // Примеры создания карт
+        String card1 = createCart("3456435345543553", "3456"); // Корректная карта
         System.out.println(card1);
-        String card2 = createCart("4567433567865434", "3457");
+        String card2 = createCart("4567433567865434", "3457"); // Некорректная карта
 
-        insertCard("3456435345543553454353453534543");
+        // Вставка карт
+        insertCard("3456435345543553");
         insertCard("4567433567865434");
-
 
         scanner.close();
     }
@@ -57,11 +62,12 @@ public class Bankomat {
         correctPIN = pin;
         Bankomat.numberCard = numberCard;
 
-        if (numberCard.length() != 16 || pin.length() != 4) {
+        if (numberCard.length() != 16 || pin.length() != 4 || !numberCard.matches("[0-9]+") || !pin.matches("[0-9]+")) {
             System.out.println("Ошибка при создании карты");
             return null;
         } else {
-            return "Карта создана";
+            System.out.println("Карта создана!!");
+            return "";
         }
     }
 
