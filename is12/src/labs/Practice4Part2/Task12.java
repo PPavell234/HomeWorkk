@@ -18,7 +18,7 @@ public class Task12 {
             System.out.print("Темперутура в градусах цельсия равна ");
             return Math.ceil(temperatureGas);
         } else {
-            System.out.print("Ошибка ");
+            System.out.print("Ошибка температура должна быть в пределах от 12 до 18 ");
             return Double.NaN;
         }
     }

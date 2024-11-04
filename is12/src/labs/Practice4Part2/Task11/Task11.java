@@ -263,7 +263,7 @@ public class Task11 {
         // Создаем двери и сохраняем их состояние
         t.createDoor(1, "close", "left");
         t.createDoor(2, "close", "left");
-        t.createDoor(3, "open", "right");
+        t.createDoor(3, "close", "right");
         t.createDoor(4, "close", "right");
 
         t.createDoor(5, "open", "left");

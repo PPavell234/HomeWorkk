@@ -2,20 +2,48 @@ package labs.Practice4Part2;
 
 import java.util.Scanner;
 
+
 public class QuadrilateralType {
 
+    // Точность сравнения для вещественных чисел
     private static final double T = 0.0001;
 
-    // Метод для вычисления длины отрезка
+    /**
+     * Метод для вычисления длины отрезка между двумя точками.
+     *
+     * @param x1 координата X первой точки
+     * @param y1 координата Y первой точки
+     * @param x2 координата X второй точки
+     * @param y2 координата Y второй точки
+     * @return длина отрезка
+     */
     private static double length(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
 
-    // Метод для проверки параллельности
+    /**
+     * Метод для проверки параллельности двух отрезков.
+     *
+     * @param x1 координата X первой точки первого отрезка
+     * @param y1 координата Y первой точки первого отрезка
+     * @param x2 координата X второй точки первого отрезка
+     * @param y2 координата Y второй точки первого отрезка
+     * @param x3 координата X первой точки второго отрезка
+     * @param y3 координата Y первой точки второго отрезка
+     * @param x4 координата X второй точки второго отрезка
+     * @param y4 координата Y второй точки второго отрезка
+     * @return true, если отрезки параллельны, иначе false
+     */
     private static boolean isParallel(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
         return (y2 - y1) * (x4 - x3) == (y4 - y3) * (x2 - x1);
     }
 
+    /**
+     * Главный метод программы, который запрашивает у пользователя координаты четырех точек
+     * и определяет тип четырехугольника.
+     *
+     * @param args аргументы командной строки
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
