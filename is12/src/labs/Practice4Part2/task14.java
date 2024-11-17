@@ -24,7 +24,6 @@ public class task14 {
      */
     public String halleySpeed(double launchSpeedMph) {
         double launchSpeedMps = launchSpeedMph * 0.44704; // Конвертация скорости в метры в секунду
-        double radius = 11.2 * Math.pow(10, 3);
         double escapeVelocity = Math.sqrt((2 * (G * (1.3 * Math.pow(10, 22))) / COMET_RADIUS)); // Расчет скорости отрыва
         System.out.println("Скорость отрывания: " + escapeVelocity + " м/с");
 
