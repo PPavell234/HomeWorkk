@@ -1,0 +1,38 @@
+@startuml
+
+class Student {
+    -userId : int
+    -name : String
+    -age : int
+}
+
+class FindWork extends Student {
+    -skills : Stirng
+    -aboutMyself : String
+    -availableTime: Data
+}
+
+class Sponsors {
+ -project : Project
+ -skills : Stirng
+ -salary : double
+ -workingHours : Time
+}
+
+
+
+
+class Project {
+ -project_id : int
+ -name : Stirng
+ -description : String
+ -status : Stirng (Планируется,Завершен,Отменен)
+ -documets : Apache PDFBox
+}
+
+
+@enduml
+
+//
+Описание классов:
+

@@ -1,0 +1,99 @@
+@startuml
+class User {
+    -userId : int
+    -name : String
+    -contactInfo : String
+}
+
+class Driver extends User {
+    -monthlySalary : double
+    -vehicle : Vehicle
+    -rating : double
+}
+
+class Rider extends User {
+    -paymentInfo : PaymentInfo
+}
+
+class Vehicle {
+    -vehicleId : int
+    -make : String
+    -model : String
+    -licensePlate : String
+    -capacity : int
+}
+
+class Ride {
+    -rideId : int
+    -driver : Driver
+    -rider : Rider
+    -origin : Location
+    -destination : Location
+    -distance : double
+    -price : double
+    -startTime : DateTime
+    -endTime : DateTime
+}
+
+class Location {
+    -locationId : int
+    -address : String
+    -latitude : double
+    -longitude : double
+}
+
+class PaymentInfo {
+    -paymentId : int
+    -paymentMethod : String
+    -cardNumber : String  // optional, can be replaced with a more secure method
+}
+
+class Application {
+    +findRide(rider : Rider, origin : Location, destination : Location) : Ride
+    +findDriver(ride : Ride) : Driver
+    +processPayment(ride : Ride) : void
+    +sendNotifications(ride : Ride) : void
+}
+
+
+Driver "1" -- "*" Ride : drives
+Rider "1" -- "1" Ride : takes
+Ride "1" -- "1" Location : origin
+Ride "1" -- "1" Location : destination
+Ride "1" -- "1" PaymentInfo : payment
+Driver "1" -- "1" Vehicle : drives
+Application ..> Driver : manages
+Application ..> Rider : manages
+Application ..> Ride : manages
+
+
+@enduml
+
+//
+Описание классов:
+
+User: Базовый класс для водителей и пассажиров. Содержит общие атрибуты, такие как ID, имя и контактная информация.
+
+Driver: Наследуется от User. Добавляет атрибуты, специфичные для водителей: ежемесячная зарплата, транспортное средство и рейтинг.
+
+Rider: Наследуется от User. Добавляет атрибуты, специфичные для пассажиров: информацию об оплате.
+
+Vehicle: Представляет транспортное средство водителя (марка, модель, номерной знак, вместимость).
+
+Ride: Представляет отдельную поездку. Содержит информацию о водителе, пассажире, месте отправления, пункте назначения, расстоянии, цене, времени начала и окончания.
+
+Location: Представляет местоположение (адрес, широта, долгота).
+
+PaymentInfo: Содержит информацию о способе оплаты пассажира.
+
+Application: Представляет приложение, которое управляет системой. Содержит методы для поиска поездок и водителей, обработки платежей и отправки уведомлений.
+
+Дополнительные замечания:
+
+Для повышения безопасности платежной информации, вместо прямого хранения номера карты cardNumber лучше использовать интеграцию с платежным шлюзом.
+
+Можно добавить классы для управления рейтингом водителей и пассажиров, а также для обработки жалоб и отзывов.
+
+Можно добавить класс Route для хранения информации о маршруте поездки.
+
+Эта модель является упрощенной. В реальной системе потребуется больше классов и атрибутов для обеспечения полной функциональности.
